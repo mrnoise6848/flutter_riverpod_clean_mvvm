@@ -16,7 +16,6 @@ class _NotificationPage extends ConsumerState<NotificationPage> {
   Widget build(BuildContext context) {
     final model = ref.watch(notificationPageProvider);
     final viewModel = ref.read(notificationPageProvider.notifier);
-
     double height = MediaQuery
         .of(context)
         .size

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:test_riverpod/clean_mvvm_riverpod/core/lang/en_lang.dart';
+import 'package:test_riverpod/clean_mvvm_riverpod/core/lang/fa_lang.dart';
+import '../../main.dart';
 import '../adapter/faq_data.dart';
 import '../model/notification_model.dart';
 
@@ -23,6 +26,12 @@ class NotificationViewModel extends StateNotifier<NotificationModel> {
   }
 
   Future<void> getFaq(BuildContext context) async {
+
+    L.hello;
+    L = FaLang() as EnLang;
+    L.hello;
+
+
     try {
         List<DataFaq> newFaqList = [];
         state.copyWith(dataFaq: []);

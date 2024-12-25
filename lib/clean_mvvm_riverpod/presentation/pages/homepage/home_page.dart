@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../view_models/home_view_model.dart';
-import '../widgets/coin_widget.dart';
+import '../../view_models/home_view_model.dart';
+import '../../widgets/coin_widget.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -19,7 +19,11 @@ class HomePage extends ConsumerWidget {
               itemCount: model.coins.length,
               itemBuilder: (context, index) {
                 final coin = model.coins[index];
-                return CoinWidget.coinWidgetVertical(coin, model.coinSelected == index, () => viewModel.updateCoinSelected(index));
+                return CoinWidget.coinWidgetVertical(
+                  coin,
+                  model.coinSelected == index,
+                  () => viewModel.updateCoinSelected(index),
+                );
               },
             ),
       floatingActionButton: FloatingActionButton(

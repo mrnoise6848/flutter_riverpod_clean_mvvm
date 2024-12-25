@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import '../../main.dart';
+import 'lang/en_lang.dart';
+
 const background = Color(0xffffffff);
 const gray796 = Color(0xff7b96a3);
 const gray566 = Color(0xff566f7c);
@@ -41,7 +44,9 @@ const colorLightPink = Color(0xFFFDF6F7);
 const colorF8 = Color(0xFFF5F6FA);
 const colorFFF4DB = Color(0xFFFFF4DB);
 const colorFAFAFA = Color(0xFFFAFAFA);
-const colorFFFCFCFF = Color(0xFFFCFCFF);
+Color colorFFFCFCFF = Color(L == EnLang() ?  0xFFFCFCFF : 0xFFFAFAFA);
+
+
 
 Color fromHex(String hexString) {
   final buffer = StringBuffer();

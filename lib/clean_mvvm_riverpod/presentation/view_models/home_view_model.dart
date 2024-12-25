@@ -18,7 +18,7 @@ class HomeViewModel extends StateNotifier<HomeModel> {
   Future<void> fetchCoins() async {
     state = state.copyWith(isLoading: true);
     try {
-      final getDataFromUseCase = await useCase();
+      final getDataFromUseCase = await useCase.call();
       if (getDataFromUseCase.statusCode == 200) {
         state = state.copyWith(coins: getDataFromUseCase.data, isLoading: false);
       } else {

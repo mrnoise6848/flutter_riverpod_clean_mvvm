@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_riverpod/clean_mvvm_riverpod/core/lang/en_lang.dart';
-import 'clean_mvvm_riverpod/presentation/pages/home_page.dart';
+import 'package:test_riverpod/mvvm_riverpod/view/NotificationPage.dart';
+import 'clean_mvvm_riverpod/presentation/pages/homepage/home_page.dart';
 
 var L = EnLang();
+var isFarsi =  L != EnLang();
 
 void main() {
   runApp(
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: DefaultPage(),
+      // home: NotificationPage(),
       home: HomePage(),
     );
   }
