@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import '../../data/model/api_response.dart';
 import '../../domain/entities/coin.dart';
 

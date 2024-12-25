@@ -5,7 +5,7 @@ import '../../domain/use_cases/home_use_case.dart';
 import '../model/home_model.dart';
 
 final homeViewModelProvider = StateNotifierProvider<HomeViewModel, HomeModel>((ref) {
-  final repository = CoinRepositoryImpl(HomeApi());
+  final repository = HomeRepositoryImpl(HomeApi());
   final useCase = GetHomeUseCase(repository);
   return HomeViewModel(useCase);
 });

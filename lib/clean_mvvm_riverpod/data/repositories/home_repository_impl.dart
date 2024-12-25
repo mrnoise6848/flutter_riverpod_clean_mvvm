@@ -3,10 +3,10 @@ import '../../domain/repositories/home_repository.dart';
 import '../data_sources/network/home_api.dart';
 import '../model/api_response.dart';
 
-class CoinRepositoryImpl implements HomeRepository {
+class HomeRepositoryImpl implements HomeRepository {
   final HomeApi api;
 
-  CoinRepositoryImpl(this.api);
+  HomeRepositoryImpl(this.api);
 
   @override
   Future<ApiResponse<List<Coin>>> getCoins() async {

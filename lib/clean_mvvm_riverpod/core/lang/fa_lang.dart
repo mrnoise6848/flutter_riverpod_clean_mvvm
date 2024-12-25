@@ -1,6 +1,8 @@
 import 'base_lang.dart';
 
-class faLang extends BaseLang {
+class FaLang extends BaseLang {
 
+  @override
+  String get appName => "نام اپ";
 
 }
