@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../utils/colors.dart';
+import '../../core/colors.dart';
 import 'faq_data.dart';
 
 class FaqItemView {

@@ -10,10 +10,7 @@ final defaultPageProvider = StateNotifierProvider<DefaultViewModel, DefaultModel
       (ref) => DefaultViewModel(),
 );
 
+
 final notificationPageProvider = StateNotifierProvider<NotificationViewModel, NotificationModel>(
         (ref) => NotificationViewModel()
-);
-
-final notificationPagezProvider = StateNotifierProvider<NotificationViewModel,NotificationModel>(
-    (ref) => NotificationViewModel()
 );

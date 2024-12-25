@@ -20,7 +20,6 @@ class DioHandler {
     dio.interceptors.add(LogInterceptor(responseBody: true));
   }
 
-  // ارسال درخواست GET
   Future<Response> get(String path, {Map<String, dynamic>? queryParameters}) async {
     try {
       return await dio.get(path, queryParameters: queryParameters);
@@ -30,7 +29,6 @@ class DioHandler {
     }
   }
 
-  // ارسال درخواست POST
   Future<Response> post(String path, {Map<String, dynamic>? data}) async {
     try {
       return await dio.post(path, data: data);

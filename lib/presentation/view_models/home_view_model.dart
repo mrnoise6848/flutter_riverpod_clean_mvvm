@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../domain/use_cases/get_coins_use_case.dart';
+import '../../domain/use_cases/home_use_case.dart';
 import '../model/home_model.dart';
 
 class HomeViewModel extends StateNotifier<HomeModel> {
-  final GetCoinsUseCase useCase;
+  final GetHomeUseCase useCase;
 
   HomeViewModel(this.useCase) : super(HomeModel());
 

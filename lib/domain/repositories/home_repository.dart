@@ -1,5 +1,5 @@
 import '../../domain/entities/coin.dart';
 
-abstract class CoinRepository {
+abstract class HomeRepository {
   Future<List<Coin>> getCoins();
 }

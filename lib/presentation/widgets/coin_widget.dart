@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_riverpod/other/utils/colors.dart';
+import 'package:test_riverpod/core/colors.dart';
 import '../../domain/entities/coin.dart';
 
 class CoinWidget {

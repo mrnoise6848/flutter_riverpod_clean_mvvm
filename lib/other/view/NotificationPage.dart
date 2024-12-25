@@ -14,17 +14,11 @@ class NotificationPage extends ConsumerStatefulWidget {
 class _NotificationPage extends ConsumerState<NotificationPage> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery
-        .of(context)
-        .size
-        .height;
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width;
-
     final model = ref.watch(notificationPageProvider);
     final viewModel = ref.read(notificationPageProvider.notifier);
+
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
 
     return Container(
         width: width,
@@ -64,7 +58,7 @@ class _NotificationPage extends ConsumerState<NotificationPage> {
                     model.dataFaq[index],
                     index,
                     model.selectFaq == index,
-                        () {
+                    () {
                       viewModel.updateSelectedFaq(index);
                     },
                   );
@@ -75,3 +69,28 @@ class _NotificationPage extends ConsumerState<NotificationPage> {
         ));
   }
 }
+
+class LoginScreen extends ConsumerStatefulWidget {
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _LoginScreen();
+
+}
+
+class _LoginScreen extends ConsumerState<LoginScreen> {
+  @override
+  Widget build(BuildContext context) {
+    final model = ref.read(notificationPageProvider);
+    final viewmodel = ref.watch(notificationPageProvider.notifier);
+
+    return GestureDetector(
+      onTap: (){
+        viewmodel.updateIncreaseCounter(model.counter + 1);
+      },
+      child: Text(model.counter.toString()),
+    );
+  }
+
+}
+
+
+
