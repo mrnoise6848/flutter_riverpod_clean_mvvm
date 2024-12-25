@@ -1,4 +1,4 @@
-import 'package:test_riverpod/data/model/api_response.dart';
+import '../../data/model/api_response.dart';
 import '../entities/coin.dart';
 import '../repositories/home_repository.dart';
 

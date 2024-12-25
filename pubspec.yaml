@@ -21,7 +21,7 @@ version: 1.0.0+1
 environment:
   sdk: ^3.6.0
 
-# Dependencies specify other packages that your package needs in order to work.
+# Dependencies specify mvvm_riverpod packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
 # dependencies can be manually updated by changing the version numbers below to
@@ -80,7 +80,7 @@ flutter:
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
+  # list giving the asset and mvvm_riverpod descriptors for the font. For
   # example:
   # fonts:
   #   - family: Schyler
