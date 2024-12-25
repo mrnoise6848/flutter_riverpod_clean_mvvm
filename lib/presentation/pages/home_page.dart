@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../core/providers/providers.dart';
+import '../view_models/home_view_model.dart';
 import '../widgets/coin_widget.dart';
 
 class HomePage extends ConsumerWidget {

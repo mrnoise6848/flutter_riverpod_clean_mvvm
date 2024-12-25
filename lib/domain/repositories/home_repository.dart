@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
+import '../../data/model/api_response.dart';
 import '../../domain/entities/coin.dart';
 
 abstract class HomeRepository {
-  Future<List<Coin>> getCoins();
+  Future<ApiResponse<List<Coin>>> getCoins();
 }

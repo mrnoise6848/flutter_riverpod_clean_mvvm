@@ -1,3 +1,4 @@
+import 'package:test_riverpod/data/model/api_response.dart';
 import '../entities/coin.dart';
 import '../repositories/home_repository.dart';
 
@@ -6,7 +7,7 @@ class GetHomeUseCase {
 
   GetHomeUseCase(this.repository);
 
-  Future<List<Coin>> call() async {
+  Future<ApiResponse<List<Coin>>> call() async {
     return await repository.getCoins();
   }
 }

@@ -1,10 +1,11 @@
 import '../../../core/network/dio_handler.dart';
 import '../../../domain/entities/coin.dart';
+import '../../model/api_response.dart';
 
 class HomeApi {
   final DioHandler httpClient = DioHandler();
 
-  Future<List<Coin>> fetchCoins(String vsCurrency) async {
+  Future<ApiResponse<List<Coin>>> fetchCoins(String vsCurrency) async {
     try {
       final response = await httpClient.get(
         "coins/markets",
@@ -13,24 +14,26 @@ class HomeApi {
 
       if (response.statusCode == 200) {
         final List<dynamic> jsonData = response.data;
-        return jsonData.map((json) => Coin(
-          id: json['id'],
-          symbol: json['symbol'],
-          name: json['name'],
-          image: json['image'],
-          currentPrice: (json['current_price'] as num).toDouble(),
-          marketCap: json['market_cap'],
-          marketCapRank: json['market_cap_rank'],
-          high24h: (json['high_24h'] as num).toDouble(),
-          low24h: (json['low_24h'] as num).toDouble(),
-          priceChange24h: (json['price_change_24h'] as num).toDouble(),
-          priceChangePercentage24h: (json['price_change_percentage_24h'] as num).toDouble(),
-        )).toList();
+        final List<Coin> coins = jsonData.map((json) => Coin.fromJson(json)).toList();
+
+        return ApiResponse<List<Coin>>(
+          data: coins,
+          message: "Coins fetched successfully",
+          statusCode: response.statusCode!,
+        );
       } else {
-        throw Exception("Failed to fetch coins: ${response.statusMessage}");
+        return ApiResponse(
+          data: [],
+          message: "Failed to fetch coins: ${response.statusMessage}",
+          statusCode: response.statusCode!,
+        );
       }
     } catch (e) {
-      throw Exception("Error fetching coins: $e");
+      return ApiResponse(
+        data: [],
+        message: "Error fetching coins: $e",
+        statusCode: -100,
+      );
     }
   }
 }
