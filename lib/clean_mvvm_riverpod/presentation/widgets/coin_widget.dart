@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/colors.dart';
+import '../../core/utils/colors.dart';
 import '../../domain/entities/coin.dart';
 
 class CoinWidget {

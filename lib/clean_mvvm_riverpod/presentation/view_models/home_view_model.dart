@@ -1,29 +1,27 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../data/data_sources/network/home_api.dart';
-import '../../data/repositories/home_repository_impl.dart';
-import '../../domain/use_cases/home_use_case.dart';
+import 'package:test_riverpod/clean_mvvm_riverpod/core/utils/AppPreference.dart';
+import 'package:test_riverpod/clean_mvvm_riverpod/core/utils/enums.dart';
+import 'package:test_riverpod/clean_mvvm_riverpod/core/helpers/snackbar_helper.dart';
+import '../../domain/use_cases/authentication_use_case.dart';
 import '../model/home_model.dart';
 
-final homeViewModelProvider = StateNotifierProvider<HomeViewModel, HomeModel>((ref) {
-  final repository = HomeRepositoryImpl(HomeApi());
-  final useCase = GetHomeUseCase(repository);
-  return HomeViewModel(useCase);
-});
-
 class HomeViewModel extends StateNotifier<HomeModel> {
-  final GetHomeUseCase useCase;
+  final GetAuthenticationUseCase getAuthenticationUseCase;
+  final AsyncValue<AppPreference> asyncAppPreference;
 
-  HomeViewModel(this.useCase) : super(HomeModel());
+  HomeViewModel(this.getAuthenticationUseCase, this.asyncAppPreference) : super(HomeModel());
 
-  Future<void> fetchCoins() async {
+  Future<void> fetchCoins(BuildContext context) async {
     state = state.copyWith(isLoading: true);
     try {
-      final getDataFromUseCase = await useCase.call();
+      final getDataFromUseCase = await getAuthenticationUseCase.call();
       if (getDataFromUseCase.statusCode == 200) {
         state = state.copyWith(coins: getDataFromUseCase.data, isLoading: false);
       } else {
         print(getDataFromUseCase.message);
         state = state.copyWith(isLoading: false);
+        SnackBarHelper.show(context, "message", type: SnackBarType.info);
       }
     } catch (e) {
       state = state.copyWith(isLoading: false);
@@ -33,5 +31,31 @@ class HomeViewModel extends StateNotifier<HomeModel> {
 
   updateCoinSelected(int newValue) {
     state = state.copyWith(coinSelected: newValue);
+  }
+
+  updateBottomNavSelected(int newValue) {
+    state = state.copyWith(bottomNavSelected: newValue);
+  }
+
+  Future<void> saveUserToken(String token) async {
+    final appPreference = asyncAppPreference.asData?.value;
+    if (appPreference != null) {
+      await appPreference.setStringPref(PrefKey.userToken, token);
+    }
+  }
+
+  Future<String?> getUserToken() async {
+    final appPreference = asyncAppPreference.asData?.value;
+    if (appPreference != null) {
+      return await appPreference.getStringPref(PrefKey.userToken);
+    }
+    return '';
+  }
+
+  Future<void> clearUserToken() async {
+    final appPreference = asyncAppPreference.asData?.value;
+    if (appPreference != null) {
+      await appPreference.setStringPref(PrefKey.userToken, "");
+    }
   }
 }
