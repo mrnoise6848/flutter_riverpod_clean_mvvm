@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_riverpod/main.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
@@ -75,8 +76,8 @@ class _BottomNavItems {
     Icons.person,
   ];
 
-  static const List<String> labels = [
-    "Home",
+  static List<String> labels = [
+    L.appName,
     "Search",
     "Profile",
   ];
