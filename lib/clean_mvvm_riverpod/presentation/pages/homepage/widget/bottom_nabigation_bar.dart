@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:test_riverpod/clean_mvvm_riverpod/core/utils/images.dart';
 import 'package:test_riverpod/main.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -32,14 +34,17 @@ class CustomBottomNavigationBar extends StatelessWidget {
             children: List.generate(3, (index) {
               final isSelected = index == selectedIndex;
               return GestureDetector(
+                behavior: HitTestBehavior.opaque,
                 onTap: () => onItemSelected(index),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(height: 4),
-                    Icon(
+                    SvgPicture.asset(
                       _BottomNavItems.icons[index],
                       color: isSelected ? Colors.blue : Colors.grey,
+                      width: 24,
+                      height: 24,
                     ),
                     Text(
                       _BottomNavItems.labels[index],
@@ -70,15 +75,19 @@ class CustomBottomNavigationBar extends StatelessWidget {
 }
 
 class _BottomNavItems {
-  static const List<IconData> icons = [
-    Icons.home,
-    Icons.search,
-    Icons.person,
+  static List<String> icons = [
+    Images.homeSmile,
+    Images.calenderPlus,
+    Images.coin,
+    Images.comment,
+    Images.other,
   ];
 
   static List<String> labels = [
-    L.appName,
-    "Search",
-    "Profile",
+    L.home,
+    L.calender,
+    L.accounting,
+    L.comments,
+    L.others,
   ];
 }

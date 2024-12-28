@@ -1,4 +1,4 @@
-const _assets = "assets";
+const _assets = "assets/images";
 
 class Images {
   static const alarm = "$_assets/alarm.png";
